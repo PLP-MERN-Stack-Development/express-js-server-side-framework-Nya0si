@@ -1,6 +1,8 @@
 //full express.js RESTFUL API impememtning CRUD, middleware, validationa, and error handling
 import express from 'express';
 import {v4 as uuidv4} from 'uuid';
+import dotenv from 'dotenv';
+dotenv.config();
 
 //--------------------error classes--------------------
 class AppError extends Error {
@@ -121,7 +123,11 @@ app.use((req, res, next) => {
 });
 
 //simple auth middleware
-const apikey = process.env.API_KEY || '2004Josh';
+const apikey = process.env.API_KEY;
+const PORT = process.env.PORT || 3000;
+if (!apikey) {
+    console.warn('Warning: API_KEY is not set in environment variables. Auth middleware will reject all requests.');
+}
 const authMiddleware = (req, res, next) => {
     const key = req.headers['x-api-key'];
     if (!key || key !== apikey) {
