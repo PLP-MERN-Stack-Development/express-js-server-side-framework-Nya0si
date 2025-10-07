@@ -1,62 +1,109 @@
-# Express.js RESTful API Assignment
+📦 Express.js REST API
 
-This assignment focuses on building a RESTful API using Express.js, implementing proper routing, middleware, and error handling.
+A simple RESTful API built with Express.js, implementing standard CRUD operations, middleware, error handling, and advanced features like filtering, pagination, and search.
 
-## Assignment Overview
+🚀 Features
 
-You will:
-1. Set up an Express.js server
-2. Create RESTful API routes for a product resource
-3. Implement custom middleware for logging, authentication, and validation
-4. Add comprehensive error handling
-5. Develop advanced features like filtering, pagination, and search
+CRUD operations on products
 
-## Getting Started
+Middleware:
 
-1. Accept the GitHub Classroom assignment invitation
-2. Clone your personal repository that was created by GitHub Classroom
-3. Install dependencies:
-   ```
-   npm install
-   ```
-4. Run the server:
-   ```
-   npm start
-   ```
+Request logger
 
-## Files Included
+JSON body parsing
 
-- `Week2-Assignment.md`: Detailed assignment instructions
-- `server.js`: Starter Express.js server file
-- `.env.example`: Example environment variables file
+API key authentication
 
-## Requirements
+Input validation
 
-- Node.js (v18 or higher)
-- npm or yarn
-- Postman, Insomnia, or curl for API testing
+Error handling with custom error classes
 
-## API Endpoints
+Advanced features:
 
-The API will have the following endpoints:
+Filtering products by category
 
-- `GET /api/products`: Get all products
-- `GET /api/products/:id`: Get a specific product
-- `POST /api/products`: Create a new product
-- `PUT /api/products/:id`: Update a product
-- `DELETE /api/products/:id`: Delete a product
+Pagination
 
-## Submission
+Search by name
 
-Your work will be automatically submitted when you push to your GitHub Classroom repository. Make sure to:
+Product statistics
 
-1. Complete all the required API endpoints
-2. Implement the middleware and error handling
-3. Document your API in the README.md
-4. Include examples of requests and responses
+📂 Project Setup
+1. Clone the repo
+git clone <your-repo-url>
+cd <project-folder>
 
-## Resources
+2. Install dependencies
+npm install
 
-- [Express.js Documentation](https://expressjs.com/)
-- [RESTful API Design Best Practices](https://restfulapi.net/)
-- [HTTP Status Codes](https://developer.mozilla.org/en-US/docs/Web/HTTP/Status) 
+3. Environment Variables
+
+Create a .env file in the project root:
+
+PORT=3000
+API_KEY=2004Josh
+
+▶️ Running the Server
+
+Start the development server:
+
+npm start
+
+
+Server will run at:
+👉 http://localhost:3000
+
+📡 API Endpoints
+Base URL
+http://localhost:3000/api/products
+
+Routes
+Method	Endpoint	Description	Auth Required
+GET	/api/products	Get all products (supports ?category, ?page, ?limit)	✅
+GET	/api/products/:id	Get product by ID	✅
+POST	/api/products	Create new product	✅
+PUT	/api/products/:id	Update product by ID	✅
+DELETE	/api/products/:id	Delete product by ID	✅
+GET	/api/products/search?q=	Search product by name	✅
+GET	/api/products/stats	Get product stats by category	✅
+🔑 Authentication
+
+All requests require an API key in the header:
+
+x-api-key: 2004Josh
+
+🧪 Testing
+
+You can test using:
+
+Postman
+
+Insomnia
+
+cURL
+
+Example with cURL:
+
+curl -H "x-api-key: 2004Josh" http://localhost:3000/api/products
+
+⚠️ Error Handling
+
+400 – Validation errors
+
+401 – Unauthorized (missing/invalid API key)
+
+404 – Resource not found
+
+500 – Internal server error
+
+📌 Tech Stack
+
+Node.js
+
+Express.js
+
+dotenv
+
+uuid
+
+body-parser

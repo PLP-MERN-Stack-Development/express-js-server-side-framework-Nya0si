@@ -124,7 +124,6 @@ app.use((req, res, next) => {
 
 //simple auth middleware
 const apikey = process.env.API_KEY;
-const PORT = process.env.PORT || 3000;
 if (!apikey) {
     console.warn('Warning: API_KEY is not set in environment variables. Auth middleware will reject all requests.');
 }
